@@ -1,0 +1,16 @@
+{
+  "name": "arceus",
+  "version": "1.0.0",
+  "description": "Focused On ModMail",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Firez",
+  "license": "Apache-2.0",
+  "dependencies": {
+    "discord.js": "^12.5.3",
+    "glob": "^7.1.7",
+    "mongoose": "^5.13.2"
+  }
+}
