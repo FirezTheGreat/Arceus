@@ -1,5 +1,5 @@
-const YashNotBot = require('./structures/YashNotBot');
+const Arceus = require('./structures/YashNotBot');
 const config = require('./config.json');
 
-const bot = new YashNotBot(config);
+const bot = new Arceus(config);
 bot.start();
