@@ -1,2 +1,3 @@
 # Arceus
-Discord Bot Focused On Modmail - By Firez
+Discord Bot Focused On Modmail.
+- By Firez
