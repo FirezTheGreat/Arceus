@@ -17,7 +17,7 @@ module.exports = class extends Event {
 				data.push({ name: key, description: value.description, options: value.commandOptions });
 			};
             
-			await this.bot.guilds.cache.last().commands.set(data);
+			await this.bot.application.commands.set(data);
 			console.log(`${this.bot.user.username} is Online!`);
 
 			const banned = await BannedList.find({});
