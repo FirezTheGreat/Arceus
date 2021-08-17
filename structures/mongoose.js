@@ -11,7 +11,7 @@ module.exports = {
             connectTimeoutMS: 10000,
             family: 4
         }; 
-        connect('mongodb+srv://abhro:abhro@cluster0.4b14t.mongodb.net/test?authSource=admin&replicaSet=atlas-jfl2hb-shard-0&readPreference=primary&appname=MongoDB%20Compass&ssl=true', dbOptions);
+        connect('', dbOptions);
         set('useFindAndModify', false);
         Promise = global.Promise;
 

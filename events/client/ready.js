@@ -10,10 +10,18 @@ module.exports = class extends Event {
 
 	async run() {
 		try {
-			this.bot.user.setActivity(`DM to contact staff`, { type: 'PLAYING' });
+            let slashCommands = this.bot.commands.filter(command => command.slashCommand);
+			let data = [];
+
+			for (const [key, value] of slashCommands) {
+				data.push({ name: key, description: value.description, options: value.commandOptions });
+			};
+            
+			await this.bot.guilds.cache.last().commands.set(data);
 			console.log(`${this.bot.user.username} is Online!`);
 
-			let banned = await BannedList.find();
+			const banned = await BannedList.find({});
+
 			for (let i = 0; i < banned.length; i++) {
 				let time = banned[i].time - Date.now();
 				if (time <= 0) time = 0;
@@ -21,7 +29,7 @@ module.exports = class extends Event {
 				setTimeout(async () => {
 					await BannedList.deleteOne({ ID: banned[i].ID });
 
-					let user = this.bot.users.cache.get(banned[i].ID);
+					let { user } = this.bot.users.fetch(banned[i].ID);
 					if (user) user.send(`**You Have Been Unbanned From Using Modmail**`).catch(() => null);
 				}, time);
 			};

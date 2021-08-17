@@ -1,20 +1,22 @@
-const { Client, Collection, Intents } = require('discord.js');
+const { Client, Collection } = require('discord.js');
 const Util = require('./Util');
 
 module.exports = class YashNotBot extends Client {
     constructor(options = {}) {
         super({
-            fetchAllMembers: true,
-            partials: ['MESSAGE', 'REACTION'],
-            ws: {
-                intents: new Intents(Intents.NON_PRIVILEGED).add('GUILD_MEMBERS')
-            }
+            partials: ['MESSAGE', 'REACTION', 'CHANNEL'],
+            presence: {
+                status: 'online',
+                activities: [
+                    { name: 'DM to contact staff', type: 'PLAYING' }
+                ]
+            },
+            intents: ['GUILDS', 'GUILD_MEMBERS', 'GUILD_MESSAGES', 'DIRECT_MESSAGES']
         });
 
         this.validate(options);
 
         this.commands = new Collection();
-        this.aliases = new Collection();
         this.events = new Collection();
         this.utils = new Util(this);
         this.modmail = new Collection();

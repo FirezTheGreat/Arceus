@@ -1,7 +1,11 @@
 const Event = require('../../structures/Event');
 const ModmailList = require('../../structures/models/ModmailList');
 
-module.exports = class GuildMemberAdd extends Event {
+module.exports = class GuildMemberRemove extends Event {
+    constructor(...args) {
+		super(...args);
+	};
+    
     async run(member) {
         try {
             if (member.user.bot) return;
